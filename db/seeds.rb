@@ -1,3 +1,4 @@
+Song.destroy_all
 User.destroy_all
 user1 = User.create(name: "Eric Christine", age: 22, mood: "happy")
 user2 = User.create(name: "Marcos Lipic", age: 24, mood: "happy")

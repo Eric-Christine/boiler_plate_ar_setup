@@ -7,6 +7,8 @@ require_relative 'config/environment'
 app = Cli.new
 
 app.welcome
-app.prompt
+app.get_name 
+app.get_user_mood
+app.recommend_song
 
-app.mood 
+binding.pry 
