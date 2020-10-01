@@ -6,13 +6,17 @@ class Cli
 
     def prompt
         prompt = TTY::Prompt.new
-        prompt.ask("What is your name?", default: ENV["USER"])
-# => What is your name? (piotr)
+        prompt.select("Enter your mood", %w(Happy Sad Motivated Carefree Love))
     end 
 
-    def mood
-        prompt = TTY::Prompt.new
+    def recommend_songs
+        if prompt 
 
     end 
+
+
+
+
+     
 
 end 
