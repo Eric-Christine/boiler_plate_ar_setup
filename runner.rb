@@ -2,11 +2,11 @@ require_relative 'config/environment'
 
 # Cli.new.start_game
 
-binding.pry
+# binding.pry
 
-# app = Cli.new
+app = Cli.new
 
-# app.welcome
-# app.prompt
+app.welcome
+app.prompt
 
-# app.mood 
+app.mood 
