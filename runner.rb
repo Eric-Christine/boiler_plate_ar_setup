@@ -1,5 +1,7 @@
 require_relative 'config/environment'
 
+# require_relative 'lib/seeds.rb'
+
 # Cli.new.start_game
 
 # binding.pry

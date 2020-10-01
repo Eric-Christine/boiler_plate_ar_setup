@@ -11,7 +11,7 @@ class Cli
 
     def get_user_mood
         prompt = TTY::Prompt.new
-        @user_selection = prompt.select("Welcome #{@username}. How are you feeling?", %w(Happy Sad Motivated Carefree Romantic))
+        @user_selection = prompt.select("Welcome #{@username}. How are you feeling?", %w(Happy Sad Motivated Angsty Romantic))
     end 
 
 
@@ -33,11 +33,11 @@ class Cli
         end
     end 
 
-    def carefree_song_list 
-        carefree_songs = Song.all.select do |song|
+    def angsty_song_list 
+        angsty_songs = Song.all.select do |song|
             song.lyrics == "carefree"
         end 
-        carefree_songs.map do |song|
+        angsty_songs.map do |song|
             "'#{song.title}' by #{song.artist}"
         end
     end 
@@ -70,9 +70,9 @@ class Cli
             puts 'These are some happy songs for you to listen to:'
             puts happy_song_list
         end 
-        if @user_selection == "Carefree"
-            puts 'These are some carefree songs for you to listen to:'
-            puts carefree_song_list
+        if @user_selection == "Angsty"
+            puts 'These are some angsty songs for you to listen to:'
+            puts angsty_song_list
         end 
         if @user_selection == "Motivated"
             puts 'These are some motivating songs for you to listen to:'
@@ -81,7 +81,30 @@ class Cli
         if @user_selection == "Romantic"
             puts 'These are some romantic songs for you to listen to:'
             puts romantic_song_list
+        end   
+    end 
+
+
+    def recommend_movie
+        if @user_selection == "Sad"
+            puts 'These are some sad songs for you to listen to:'
+            puts sad_song_list
         end 
-        
+        if @user_selection == "Happy"
+            puts 'These are some happy songs for you to listen to:'
+            puts happy_song_list
+        end 
+        if @user_selection == "Angsty"
+            puts 'These are some angsty songs for you to listen to:'
+            puts angsty_song_list
+        end 
+        if @user_selection == "Motivated"
+            puts 'These are some motivating songs for you to listen to:'
+            puts motivated_song_list
+        end 
+        if @user_selection == "Romantic"
+            puts 'These are some romantic songs for you to listen to:'
+            puts romantic_song_list
+        end   
     end 
 end 
