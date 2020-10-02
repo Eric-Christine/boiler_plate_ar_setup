@@ -20,7 +20,7 @@ class Cli
         choices = Song.all.map do 
             |song| song.title 
         end 
-        @selcted_songs = prompt.select("Choose your favorite song from the following...", %w(#{choices}))   
+        @selcted_songs = prompt.select("Choose your favorite song from the following...", %w(song1.title song2.title))
     end 
   
 
