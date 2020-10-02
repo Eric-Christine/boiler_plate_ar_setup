@@ -13,8 +13,18 @@ app = Cli.new
 
 app.welcome
 app.get_name 
-app.get_user_mood
-app.sad_song_list
-app.recommend_song
 
+
+app.main_menu
+app.make_playlist
+
+app.create_new_user
+app.recommend_song
 binding.pry
+app.create_new_playlist
+
+
+
+app.sad_song_list
+
+

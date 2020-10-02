@@ -12,7 +12,7 @@ song5 = Song.create(title: "Yer Blues", artist: "The Beatles", lyrics: "sad")
 song6 = Song.create(title: "Polly", artist: "Whitney", lyrics: "sad")
 
 
-
+Playlist.destroy_all
 Playlist.create(user: user1, song: song4, name: "road trip")
 
 # Movie.destroy_all
