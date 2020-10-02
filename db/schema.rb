@@ -10,10 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_141928) do
+ActiveRecord::Schema.define(version: 2020_10_02_011727) do
 
-  create_table "keywords", force: :cascade do |t|
-    t.string "mood"
+  create_table "playlists", force: :cascade do |t|
+    t.string "name"
+    t.integer "user_id"
+    t.integer "song_id"
+    t.index ["song_id"], name: "index_playlists_on_song_id"
+    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "songs", force: :cascade do |t|
