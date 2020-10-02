@@ -10,30 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_01_222248) do
-
-  create_table "keywords", force: :cascade do |t|
-    t.string "mood"
-    t.integer "user_id"
-    t.integer "song_id"
-    t.integer "movie_id"
-    t.index ["movie_id"], name: "index_keywords_on_movie_id"
-    t.index ["song_id"], name: "index_keywords_on_song_id"
-    t.index ["user_id"], name: "index_keywords_on_user_id"
-  end
-
-  create_table "movies", force: :cascade do |t|
-    t.string "title"
-    t.string "director"
-    t.string "mood"
-  end
+ActiveRecord::Schema.define(version: 2020_10_02_011727) do
 
   create_table "playlists", force: :cascade do |t|
     t.string "name"
-    t.integer "users_id"
-    t.integer "songs_id"
-    t.index ["songs_id"], name: "index_playlists_on_songs_id"
-    t.index ["users_id"], name: "index_playlists_on_users_id"
+    t.integer "user_id"
+    t.integer "song_id"
+    t.index ["song_id"], name: "index_playlists_on_song_id"
+    t.index ["user_id"], name: "index_playlists_on_user_id"
   end
 
   create_table "songs", force: :cascade do |t|

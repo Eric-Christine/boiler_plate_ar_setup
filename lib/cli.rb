@@ -83,8 +83,7 @@ class Cli
             puts romantic_song_list
         end   
     end 
-
-
+    
     def recommend_movie
         if @user_selection == "Sad"
             puts 'These are some sad songs for you to listen to:'

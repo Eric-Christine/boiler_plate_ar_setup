@@ -13,7 +13,7 @@ song6 = Song.create(title: "Polly", artist: "Whitney", lyrics: "sad")
 
 
 
-Playlist.create(user: user1, song: song4, mood: "happy")
+Playlist.create(user: user1, song: song4, name: "road trip")
 
 # Movie.destroy_all
 # movie1 = Movie.create(title: "Madagascar", director: "Eric Darnell, Tom McGrath", mood: "happy"))
