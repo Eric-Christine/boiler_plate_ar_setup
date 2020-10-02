@@ -14,29 +14,52 @@ class Cli
     end
 
    
-
-    def main_menu
+    def first_prompt
         prompt = TTY::Prompt.new
-        choices = Song.all.map do 
+        song_titles = Song.all.map do 
             |song| song.title 
         end 
-        @selcted_songs = prompt.select("Choose your favorite song from the following...", %w(#{choices}))   
+        @selected_song = prompt.select("Which song do you like best?", song_titles)
+    end 
+
+    def add_selected_song_to_liked_songs
+        puts @selected_song
+        song_instance = Song.all.find do |song|
+            song.title == @selected_song
+        end 
+
+        Playlist.create(user: @user, song_id: song_instance.id)
+        puts "Great choice!, We've added #{@selected_song} to your 'liked' songs."
+        
+        second_prompt
+    end 
+
+
+    def second_prompt 
+        prompt = TTY::Prompt.new
+        prompt.select("Would you like to see more songs?", %w(yes no))
+    end 
+
+
+    def view_my_liked_songs
+        Playlist.all.map do |song|
+            song.user_id == @user.id
+            puts song.name
+        end 
     end 
   
 
-    def favorite_song
-        puts "Here's your favoirte song: #{@selcted_songs}"
-        prompt = TTY::Prompt.new
-        @playlist_name = prompt.ask("What would you like to name it?")
-        puts "Ok, we've added those songs to your #{@playlist_name} playlist"
-          
-
+    # def liked_songs
+    #     puts "Great choice!, We've added #{@selcted_songs} to your 'liked' songs."
+    #     # prompt = TTY::Prompt.new
+    #     # @playlist_name = prompt.ask("What would you like to name it?")
+    #     # puts "Ok, we've added those songs to your #{@playlist_name} playlist"
     
-        Playlist.create(user: @user, song: @selected_songs, name: @playlist_name)
-        binding.pry
-        make_another_playlist
+    #     Playlist.create(user: @user, song: @selected_songs, name: @playlist_name)
+    #     binding.pry
+    #     make_another_playlist
         
-    end 
+    # end 
 
     def make_another_playlist
          
