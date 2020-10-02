@@ -1,4 +1,4 @@
 class Song < ActiveRecord::Base
-    has_many :keywords
-    has_many :users, through: :keywords
+    has_many :playlists
+    has_many :users, through: :playlists
 end 
