@@ -15,10 +15,5 @@ song6 = Song.create(title: "Polly", artist: "Whitney", lyrics: "sad")
 Playlist.destroy_all
 Playlist.create(user: user1, song: song4, name: "road trip")
 
-# Movie.destroy_all
-# movie1 = Movie.create(title: "Madagascar", director: "Eric Darnell, Tom McGrath", mood: "happy"))
-# movie2 = Movie.create(title: "Titanic", director: "James Cameron", mood: "sad"))
-# movie3 = Movie.create(title: "Rocky", director: "John Avildsen", mood: "motivated"))
-# movie4 = Movie.create(title: "La La Land", director: "Damien Chazelle", mood: "romantic"))
-# movie5 = Movie.create(title: "Kill Bill", director: "Quentin Tarantino", mood: "angsty"))
+
 
