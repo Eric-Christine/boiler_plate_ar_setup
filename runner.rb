@@ -15,7 +15,7 @@ app.welcome
 app.get_name
 app.create_new_user 
 app.main_menu
-app.make_playlist
+app.favorite_song
 binding.pry
 
 # app.recommend_song

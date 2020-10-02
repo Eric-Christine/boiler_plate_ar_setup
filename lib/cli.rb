@@ -20,17 +20,18 @@ class Cli
         choices = Song.all.map do 
             |song| song.title 
         end 
-        @selcted_songs = prompt.multi_select("Choose songs you want in your playlist!", choices)
+        @selcted_songs = prompt.select("Choose your favorite song from the following...", %w(#{choices}))   
     end 
+  
 
-    def make_playlist
-        puts "Here's your new playlist: #{@selcted_songs}"
+    def favorite_song
+        puts "Here's your favoirte song: #{@selcted_songs}"
         prompt = TTY::Prompt.new
         @playlist_name = prompt.ask("What would you like to name it?")
         puts "Ok, we've added those songs to your #{@playlist_name} playlist"
-        
+          
 
-        
+    
         Playlist.create(user: @user, song: @selected_songs, name: @playlist_name)
         binding.pry
         make_another_playlist
