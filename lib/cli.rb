@@ -1,7 +1,7 @@
 class Cli
     def welcome
         system 'clear'
-        puts "Hello, Welcome to the jukebox! Tell us how you feel and we will give you a suggested song!"
+        puts "Hello, Welcome to the jukebox! "
     end 
 
     def get_name
@@ -9,21 +9,42 @@ class Cli
         @username = prompt.ask("Enter your name:")
     end 
 
+    def create_new_user
+        @user = User.create(name: "#{@username}", age: 22, mood: "#{@user_mood}")
+    end
+
+   
+
     def main_menu
         prompt = TTY::Prompt.new
-        @main_menu_selection = prompt.select("Welcome #{@username}. What would you like to do?", %w(View_playlist Make_a_new_playlist))
+        choices = Song.all.map do 
+            |song| song.title 
+        end 
+        @selcted_songs = prompt.multi_select("Choose songs you want in your playlist!", choices)
     end 
 
     def make_playlist
-        if @main_menu_selection == "Make_a_new_playlist"
-            prompt = TTY::Prompt.new
-            @user_mood = prompt.select("Ok #{@username}. What mood are you in?", %w(Happy Sad Motivated Angsty Romantic))
-        end 
+        puts "Here's your new playlist: #{@selcted_songs}"
+        prompt = TTY::Prompt.new
+        @playlist_name = prompt.ask("What would you like to name it?")
+        puts "Ok, we've added those songs to your #{@playlist_name} playlist"
+        
+
+        
+        Playlist.create(user: @user, song: @selected_songs, name: @playlist_name)
+        binding.pry
+        make_another_playlist
+        
     end 
 
-    def create_new_user
-        @user3 = User.create(name: "#{@username}", age: 22, mood: "#{@user_mood}")
-    end
+    def make_another_playlist
+         
+        prompt = TTY::Prompt.new
+        prompt.select("Would you like to make another playlist?", %w(yes no))
+
+    end 
+
+
 
     def create_new_playlist
         puts 'What would you like to name your playlist?'

@@ -12,15 +12,13 @@ ActiveRecord::Base.logger = nil
 app = Cli.new
 
 app.welcome
-app.get_name 
-
-
+app.get_name
+app.create_new_user 
 app.main_menu
 app.make_playlist
-
-app.create_new_user
-app.recommend_song
 binding.pry
+
+# app.recommend_song
 app.create_new_playlist
 
 
