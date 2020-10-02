@@ -13,32 +13,63 @@ class Cli
         @user = User.create(name: "#{@username}", age: 22, mood: "#{@user_mood}")
     end
 
-   
+
     def first_prompt
-        prompt = TTY::Prompt.new
-        song_titles = Song.all.map do 
-            |song| song.title 
+        i = 0
+        song_titles =[]
+        while i < 3 do
+            song_titles << Song.all[i].title 
+            i += 1
         end 
+
+        prompt = TTY::Prompt.new 
         @selected_song = prompt.select("Which song do you like best?", song_titles)
+
     end 
+   
+    # def first_prompt
+    #     prompt = TTY::Prompt.new 
+    #     song_titles = Song.all.map do 
+    #         |song| song.title 
+    #     end 
+    #     @selected_song = prompt.select("Which song do you like best?", song_titles)
+    # end 
 
     def add_selected_song_to_liked_songs
-        puts @selected_song
         song_instance = Song.all.find do |song|
             song.title == @selected_song
         end 
 
         Playlist.create(user: @user, song_id: song_instance.id)
-        puts "Great choice!, We've added #{@selected_song} to your 'liked' songs."
+        puts "Great choice!, We've added '#{@selected_song}' to your 'Liked' songs."
         
-        second_prompt
+        question_1
     end 
 
 
-    def second_prompt 
+    def question_1
         prompt = TTY::Prompt.new
-        prompt.select("Would you like to see more songs?", %w(yes no))
+        answer = prompt.select("What would you like to do?", %w(Add_more_songs View_liked_songs))
+        if answer == "Add_more_songs"
+            second_prompt
+        else 
+            view_my_liked_songs
+        end  
     end 
+
+    def second_prompt
+        i = 3
+        song_titles =[]
+        while i < 6 do
+            song_titles << Song.all[i].title 
+            i += 1
+        end 
+
+        prompt = TTY::Prompt.new 
+        @selected_song = prompt.select("Which song do you like best?", song_titles)
+    end 
+
+
 
 
     def view_my_liked_songs

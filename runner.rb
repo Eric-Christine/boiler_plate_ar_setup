@@ -16,7 +16,8 @@ app.get_name
 app.create_new_user 
 app.first_prompt
 app.add_selected_song_to_liked_songs
-app.view_my_liked_songs
+
+# app.view_my_liked_songs
 
 binding.pry
 binding.pry
